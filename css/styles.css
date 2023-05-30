@@ -9,7 +9,7 @@
 ============================= ================================= */
 
 :root {
-  --accent: hsla(230, 67%, 55%, 1);
+  --accent: #FE7F2D;
   --gray: hsla(232, 48%, 22%, 0.5);
   --darken: hsla(232, 48%, 22%, 1);
   --light: hsla(240, 100%, 98%, 0.5);
@@ -45,6 +45,7 @@ body {
   font-size: 10px;
   font-family: var(--ff-p);
   background-color: var(--bg-color);
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -77,4 +78,84 @@ img {
   width: 98%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* ============================= =================================
+                         Global Styles
+============================= ================================= */
+.header {
+  position: sticky;
+}
+.menu-wrapper, .main-menu ul, .menu-contacts, .menu-logo a {
+  display: flex;
+  align-items: center;
+}
+.menu-logo a {
+  gap: .3em;
+  font-size: var(--fz-md);
+  align-items: flex-start;
+}
+.menu-logo a span {
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: var(--bold);
+}
+
+.menu-wrapper {
+  position: relative;
+  flex-wrap: wrap;
+  padding: 1em 0;
+  justify-content: space-between;
+}
+.menu-logo, .mobile-menu--toggler {
+  flex-basis: 50%;
+}
+.menu-contacts {
+  padding-top: 1em;
+}
+.menu-contacts--icon svg{
+  width: 15px;
+  height: 15px;
+  color: var(--accent);
+}
+.menu-contacts--number {
+  padding-bottom: 2px;
+}
+.mobile-menu--toggler {
+  position: relative;
+}
+.mobile-menu--toggler::after, .mobile-menu--toggler::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  display: block;
+  height: 2px;
+  width: 30px;
+  background-color: black;
+  z-index: 2;
+}
+.mobile-menu--toggler::before {
+  top: -3px;
+}
+.mobile-menu--toggler::after {
+  top: 3px;
+}
+.main-menu {
+  display: none;
+  position: absolute;
+  background-color: var(--bg-color);
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.main-menu ul {
+  align-items: flex-start;
+  font-size: var(--fz-md);
+  gap: 1em;
+  flex-direction: column;
+  transform: translateY(25vh);
 }
