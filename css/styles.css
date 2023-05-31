@@ -10,7 +10,7 @@
 
 :root {
   --accent: #FE7F2D;
-  --gray: hsla(232, 48%, 22%, 0.5);
+  --gray: hsla(0, 0%, 83.5%, 0.5);
   --darken: hsla(232, 48%, 22%, 1);
   --light: hsla(240, 100%, 98%, 0.5);
 
@@ -56,6 +56,9 @@ h6 {
   text-transform: uppercase;
   font-weight: var(--bold);
   font-size: var(--fz-lg);
+}
+h2, h3 {
+  text-align: center;
 }
 a {
   color: inherit;
@@ -211,7 +214,7 @@ input {
   background-position: center;
   background-size: cover;
 }
-.hero-overlay {
+.hero-overlay, .action-overlay {
   background-color: rgba(236, 106, 0, 0.4);
 }
 .hero-content {
@@ -223,6 +226,7 @@ input {
 .hero-title h1{
   font-size: 3rem;
   color: #fff;
+  text-shadow: 1px 0px 2px rgba(0,0,0,0.6);
 }
 .hero-form {
   padding: 4em 3em;
@@ -242,4 +246,238 @@ input {
 }
 .inputfield label {
   margin-bottom: 0.5em;
+}
+.about {
+  padding: 4em 0;
+}
+.about-content {
+  display: flex;
+  flex-direction: column;
+  padding: 4em 0;
+  gap: 4em;
+}
+.about-content--text {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  flex-grow: 1;
+  font-size: var(--fz-md);
+  line-height: 1.6;
+}
+.about-content--poster {
+  flex-grow: 1;
+  min-height: 300px;
+  width: 100%;
+  background-image: url(../assets/about-van.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transform: scaleX(-1);
+}
+.about-poster--overlay {
+  display: flex;
+  flex-direction: column;
+}
+.about-poster--overlay span {
+  min-height: 100px;
+  width: 20px;
+  transform: rotateZ(-45deg);
+  background-color: var(--accent);
+}
+.about-poster--overlay span:nth-child(1) {
+  transform: translate3d(2em, -2em, 0px) rotateZ(-45deg);
+}
+.about-poster--overlay span:nth-child(2) {
+  transform: translate3d(2em, -8em, 0px) rotateZ(-45deg);
+}
+.about-poster--overlay span:nth-child(3) {
+  transform: translate3d(2em, -14em, 0px) rotateZ(-45deg);
+}
+.services {
+  padding: 4em 0;
+  background-color: var(--gray);
+}
+.services-cards {
+  padding: 2em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: auto;
+  gap: 4em;
+  justify-content: center;
+  align-items: center;
+}
+.service {
+  margin: 0 auto;
+}
+.service-icon {
+  margin: 0 auto;
+  min-width: 130px;
+  max-width: 130px;
+  color: var(--accent);
+}
+.service-name {
+  text-align: center;
+  font-size: var(--fz-md);
+}
+.plans {
+  padding: 8em 0;
+}
+.plans h2 {
+  margin-bottom: 4em;
+}
+.plans-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+.plans-card {
+  width: 100%;
+  max-width: 365px;
+  border-radius: calc(10px + 1px);
+  background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+  padding: 1px;
+}
+.plans-card--content {
+  width: 100%;
+  max-width: 365px;
+  min-height: 511px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 4em 3em;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.plans-card .btn {
+  width: 100%;
+}
+.plans-card--list li {
+  font-size: var(--fz-sm);
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+.plans-disclaimer {
+  margin-top: 2em;
+  line-height: 1.5;
+  border-radius: 10px;
+  padding: 2em 1em;
+  background-color:var(--gray);
+}
+.action {
+  background-image: url(../assets/action-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.action-overlay {
+  padding: 8em 0;
+}
+.footer {
+  background-color: var(--gray);
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  font-size: var(--fz-md);
+  padding: 2em 0;
+}
+.modal-outer {
+  display: grid;
+  background: rgba(236, 106, 0, 0.6);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  /* Hide this modal until we need it */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 5;
+}
+
+.modal-outer.openModal {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-inner {
+  border-radius: 10px;
+  min-width: 365px;
+  background: white;
+  transform: translateY(-150%);
+  transition: transform .3s;
+}
+.modal-outer.openModal .modal-inner {
+  transform: translateY(-10em);
+}
+
+/* Medium devices (e.g., tablets) */
+@media (min-width: 768px) {
+  .hero-overlay, .services {
+    padding: 10em 0;
+  }
+  .about-poster--overlay span:nth-child(1) {
+    transform: translate3d(0px, -2em, 0px) rotateZ(-45deg);
+  }
+  .about-poster--overlay span:nth-child(2) {
+    transform: translate3d(0px, -8em, 0px) rotateZ(-45deg);
+  }
+  .about-poster--overlay span:nth-child(3) {
+    transform: translate3d(0px, -14em, 0px) rotateZ(-45deg);
+  }
+  .about-content--poster {
+    min-height: 500px;
+  }
+  .footer-content {
+    flex-direction: row;
+  }
+}
+/* Extra-large devices (e.g., large desktops, wide screens) */
+@media (min-width: 1200px) {
+  .about-content {
+    padding: 8em 0;
+    flex-direction: row;
+  }
+  .about-content--poster {
+    min-width: 50%;
+  }
+  .plans-cards {
+    justify-content: space-between;
+  }
+  .mobile-menu--toggler {
+    display: none;
+  }
+  .main-menu ul{
+    display: flex;
+    gap: 2em;
+  }
+  .menu-item--link {
+    transition: color .2s ease-in-out;
+  }
+  .menu-item--link::after {
+    content: ' ';
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -1.6rem;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: all .2s ease-in-out;
+  }
+  .menu-item--link:hover::after {
+    left: 0;
+    width: 100%;
+  }
+  .menu-item--link:hover {
+    color: var(--accent);
+  }
 }
