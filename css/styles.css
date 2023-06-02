@@ -153,12 +153,17 @@ input {
   margin-right: 2em;
 }
 .menu-contacts--icon svg{
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   color: var(--accent);
 }
 .menu-contacts--number {
   padding-bottom: 2px;
+  margin-left: 0.5em;
+  transition: color .3s ease-in-out;
+}
+.menu-contacts--number:hover {
+  color: var(--accent);
 }
 .mobile-menu--toggler {
   display: flex;
@@ -209,6 +214,9 @@ input {
   flex-direction: column;
   transform: translateY(35vh);
 }
+.menu-controls .menu-contacts {
+  display: none;
+}
 .menu-item {
   transition: all .3s ease;
 }
@@ -233,23 +241,41 @@ input {
 .hero-overlay, .action-overlay {
   background-color: rgba(236, 106, 0, 0.4);
 }
-.hero-content {
-  padding: 2em 0;
+.hero-content, .action-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0 4em 0;
 }
-.hero-title {
-  padding-bottom: 4em;
+.hero-title, .action-title, .footer-social {
+  order: 2;
 }
-.hero-title h1, .hero-title h2{
+.action-title {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.action-title .tel-btn {
+  font-size: var(--fz-md);
+}
+.hero-title h1, .hero-title h2, .action-title h1, .action-title h2{
   text-align: left;
   color: #fff;
   text-shadow: 1px 0px 2px rgba(0,0,0,0.6);
 }
-.hero-title h2 {
+.hero-title h2, .action-title h2 {
+  text-align: center;
   margin-top: 1em;
+  line-height: 1.5;
+}
+.hero-title h1, .action-title h1 {
+  display: none;
 }
 .tel-btn {
   display: flex;
-  margin-right: auto;
   margin-top: 1em;
   max-width: 320px;
   padding: 1.2em 2em;
@@ -273,12 +299,15 @@ input {
   background-position: 100% 0;
 }
 .hero-form {
+  min-width: 365px;
+  max-width: 365px;
+  height: fit-content;
   margin-left: auto;
   padding: 4em 3em;
   border-radius: 10px;
   background-color: #fff;
   width: 100%;
-  max-width: 365px;
+  order: 1;
 }
 .hero-form--title {
   text-align: center;
@@ -291,9 +320,6 @@ input {
 }
 .inputfield label {
   margin-bottom: 0.5em;
-}
-.about {
-  padding: 4em 0;
 }
 .about-content {
   display: flex;
@@ -314,15 +340,15 @@ input {
   flex-grow: 1;
   min-height: 300px;
   width: 100%;
-  background-image: url(../assets/about-van.jpg);
+  background-image: url(../assets/about-pic.JPG);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  transform: scaleX(-1);
 }
 .about-poster--overlay {
   display: flex;
   flex-direction: column;
+  transform: scaleX(-1);
 }
 .about-poster--overlay span {
   min-height: 100px;
@@ -344,7 +370,7 @@ input {
   flex-direction: column;
   gap: 1em;
   font-size: var(--fz-md);
-  padding-bottom: 8em;
+  padding-bottom: 3em;
 }
 .advantages-title > * {
   margin-bottom: 1em;
@@ -372,6 +398,9 @@ input {
 .advantages-card--title {
   text-align: center;
   margin-bottom: 1em;
+}
+.advantages-card--text {
+  text-align: center;
 }
 .services {
   padding: 4em 0;
@@ -407,10 +436,10 @@ input {
   font-size: var(--fz-md);
 }
 .plans {
-  padding: 8em 0;
+  padding: 3em 0;
 }
 .plans h2 {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
 }
 .plans-cards {
   display: flex;
@@ -458,13 +487,13 @@ input {
   background-size: cover;
 }
 .action-overlay {
-  padding: 8em 0;
+  padding: 4em 0;
 }
 .stages-content {
   display: flex;
   gap: 4em;
   flex-direction: column;
-  padding: 8em 0;
+  padding: 4em 0;
 }
 .stages-steps {
   display: flex;
@@ -505,10 +534,32 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   gap: 1em;
   font-size: var(--fz-md);
   padding: 2em 0;
+}
+.footer-social {
+  font-size: var(--fz-lg);
+}
+.footer-social > * {
+  margin-right: .5em;
+}
+.footer-social--link {
+  transition: color .3s ease-in-out;
+}
+.footer-social--link:hover {
+  color: var(--accent);
+}
+.footer-copyrights {
+  order: 1;
+}
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+.footer-contacts .menu-contacts:nth-child(2) {
+  order: 1;
 }
 .modal-outer {
   display: grid;
@@ -551,8 +602,31 @@ input {
   h2 {
     font-size: 3rem;
   }
+  .menu-controls .menu-contacts {
+    display: flex;
+  }
+  .tel-btn {
+    margin-right: auto;
+  }
   .hero-overlay, .services {
     padding: 4em 0;
+  }
+  .hero-content, .action-content {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 4em 0;
+  }
+  .hero-title, .action-title, .hero-form {
+    order: 0;
+  }
+  .hero-title h2, .action-title h2 {
+    text-align: left;
+  }
+  .hero-title h1, .action-title h1 {
+    display: block;
+  }
+  .action-overlay {
+    padding: 8em 0;
   }
   .about-poster--overlay span:nth-child(1) {
     transform: translate3d(0px, -2em, 0px) rotateZ(-45deg);
@@ -563,17 +637,40 @@ input {
   .about-poster--overlay span:nth-child(3) {
     transform: translate3d(0px, -14em, 0px) rotateZ(-45deg);
   }
+  .plans-cards, .advantages-cards {
+    justify-content: center;
+  }
   .about-content--poster {
     min-height: 500px;
   }
   .footer-content {
     flex-direction: row;
+    align-items: center;
+  }
+  .footer-contacts {
+    flex-direction: row;
+    gap: 1.5em;
+  }
+  .footer-copyrights {
+    order: 0;
+  }
+  .footer-social {
+    order: 0;
   }
 }
 /* Extra-large devices (e.g., large desktops, wide screens) */
 @media (min-width: 1200px) {
-  .hero-title {
+  .menu-contacts {
+    margin-right: 0;
+  }
+  .hero-content, .action-content {
+    padding: 10em 0;
+  }
+  .hero-title, .action-title {
     padding-bottom: 0;
+  }
+  .action-title {
+    max-width: 50%;
   }
   .about-content {
     padding: 8em 0;
@@ -591,6 +688,9 @@ input {
   .main-menu ul{
     display: flex;
     gap: 2em;
+  }
+  .menu-controls > * {
+    margin-left: 1em;
   }
   .menu-item--link {
     transition: color .2s ease-in-out;
