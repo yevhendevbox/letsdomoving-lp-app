@@ -59,7 +59,7 @@ h6 {
   font-family: var(--ff-h);
   font-weight: var(--bold);
 }
-h1 {
+h1, h6 {
   font-size: 4rem;
   line-height: 1.5;
 }
@@ -261,7 +261,7 @@ input {
 .action-title .tel-btn {
   font-size: var(--fz-md);
 }
-.hero-title h1, .hero-title h2, .action-title h1, .action-title h2{
+.hero-title h1, .hero-title h2, .action-title h6, .action-title h2{
   text-align: left;
   color: #fff;
   text-shadow: 1px 0px 2px rgba(0,0,0,0.6);
@@ -271,7 +271,7 @@ input {
   margin-top: 1em;
   line-height: 1.5;
 }
-.hero-title h1, .action-title h1 {
+.hero-title h1, .action-title h6 {
   display: none;
 }
 .tel-btn {
@@ -299,14 +299,12 @@ input {
   background-position: 100% 0;
 }
 .hero-form {
-  min-width: 365px;
-  max-width: 365px;
+  width: 100%;
+  margin: 0 auto;
   height: fit-content;
-  margin-left: auto;
   padding: 4em 3em;
   border-radius: 10px;
   background-color: #fff;
-  width: 100%;
   order: 1;
 }
 .hero-form--title {
@@ -378,7 +376,7 @@ input {
 .advantages-cards {
   display: flex;
   gap: 2em;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -534,15 +532,16 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   gap: 1em;
   font-size: var(--fz-md);
   padding: 2em 0;
 }
 .footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1em;
   font-size: var(--fz-lg);
-}
-.footer-social > * {
-  margin-right: .5em;
 }
 .footer-social--link {
   transition: color .3s ease-in-out;
@@ -556,6 +555,7 @@ input {
 .footer-contacts {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: .5em;
 }
 .footer-contacts .menu-contacts:nth-child(2) {
@@ -571,7 +571,6 @@ input {
   left: 0;
   justify-content: center;
   align-items: center;
-  /* Hide this modal until we need it */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
@@ -596,11 +595,14 @@ input {
 
 /* Medium devices (e.g., tablets) */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 6rem;
+  h1, h6 {
+    font-size: 5rem;
   }
   h2 {
     font-size: 3rem;
+  }
+  .hero-title h1, .action-title h6 {
+    display: block;
   }
   .menu-controls .menu-contacts {
     display: flex;
@@ -622,8 +624,11 @@ input {
   .hero-title h2, .action-title h2 {
     text-align: left;
   }
-  .hero-title h1, .action-title h1 {
-    display: block;
+  .hero-form {
+    min-width: 365px;
+    max-width: 365px;
+    margin: 0;
+    margin-left: auto;
   }
   .action-overlay {
     padding: 8em 0;
@@ -640,26 +645,18 @@ input {
   .plans-cards, .advantages-cards {
     justify-content: center;
   }
+  .advantages-cards {
+    justify-content: space-between;
+  }
   .about-content--poster {
     min-height: 500px;
-  }
-  .footer-content {
-    flex-direction: row;
-    align-items: center;
-  }
-  .footer-contacts {
-    flex-direction: row;
-    gap: 1.5em;
-  }
-  .footer-copyrights {
-    order: 0;
-  }
-  .footer-social {
-    order: 0;
   }
 }
 /* Extra-large devices (e.g., large desktops, wide screens) */
 @media (min-width: 1200px) {
+  h1, h6 {
+    font-size: 6rem;
+  }
   .menu-contacts {
     margin-right: 0;
   }
@@ -716,5 +713,19 @@ input {
   }
   .stages-content {
     flex-direction: row;
+  }
+  .footer-contacts {
+    flex-direction: row;
+    gap: 1.5em;
+  }
+  .footer-content {
+    flex-direction: row;
+    align-items: center;
+  }
+  .footer-copyrights {
+    order: 0;
+  }
+  .footer-social {
+    order: 0;
   }
 }
