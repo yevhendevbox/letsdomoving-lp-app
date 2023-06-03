@@ -335,15 +335,19 @@ input {
   line-height: 1.6;
 }
 .about-content--poster {
+  padding-top: 2em;
   flex-grow: 1;
   min-height: 300px;
   width: 100%;
-  background-image: url(../assets/about-pic.JPG);
+  /* background-image: url(../assets/about-pic.JPG);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: cover; */
 }
 .about-poster--overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   transform: scaleX(-1);
@@ -593,6 +597,22 @@ input {
   transform: translateY(-10em);
 }
 
+.slick-dots li.slick-active button:before {
+  color: var(--accent);
+  opacity: 1;
+}
+.animation {
+  opacity: 0;
+  transform: translateX(-300px);
+  transition: all 0.4s ease-out;
+  transition-delay: 0.2s;
+
+}
+.scroll-animation {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Medium devices (e.g., tablets) */
 @media (min-width: 768px) {
   h1, h6 {
@@ -647,9 +667,6 @@ input {
   }
   .advantages-cards {
     justify-content: space-between;
-  }
-  .about-content--poster {
-    min-height: 500px;
   }
 }
 /* Extra-large devices (e.g., large desktops, wide screens) */

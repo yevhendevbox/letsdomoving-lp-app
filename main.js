@@ -5,7 +5,8 @@ const cards = document.querySelector(".plans-cards");
 const cardButtons = [...cards.querySelectorAll(".btn")];
 const modalOuter = document.querySelector(".modal-outer");
 const modalInner = document.querySelector(".modal-inner");
-console.log(cardButtons);
+const the_animation = document.querySelectorAll('.animation');
+
 function handleToggleMenu() {
   navMenu.classList.toggle('open');
   toggler.classList.toggle('toggled');
@@ -38,3 +39,30 @@ cardButtons.forEach((button) =>
 toggler.addEventListener('click', handleToggleMenu);
 links.forEach(link => link.addEventListener('click', handleMobileLinkClick));
 
+// Slick Slider controls
+$(document).ready(function () {
+  $('.slider').slick({
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: false
+  });
+});
+
+// Slide-In animation observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+          entry.target.classList.add('scroll-animation')
+      } else {
+          entry.target.classList.remove('scroll-animation')
+      }
+    });
+},
+{ threshold: 0.1 });
+  for (let i = 0; i < the_animation.length; i++) {
+   const elements = the_animation[i];
+    observer.observe(elements);
+  }
